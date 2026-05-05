@@ -42,7 +42,7 @@ const Hero = () => {
                 Hi, I’m Shivansh, a programmer based in India with a passion for
                 code.
               </p>
-              <Button />
+              <Button className="md:w-80 md:h-16 w-60 h-12" />
             </div>
           </header>
           {/* RIGHT : 3D MODEL */}
