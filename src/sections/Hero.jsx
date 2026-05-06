@@ -2,8 +2,27 @@ import React from "react";
 import { words } from "../constants";
 import Button from "../components/Button";
 import HeroExperience from "../components/models/hero_models/HeroExperience";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const Hero = () => {
+  useGSAP(() => {
+    gsap.fromTo(
+      ".hero-text h1",
+      {
+        y: 50,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.2,
+        duration: 1,
+        ease: "power2.inOut",
+      },
+    );
+  });
+
   return (
     <div>
       <section id="hero" className="relative overflow-hidden">
@@ -43,7 +62,11 @@ const Hero = () => {
                 Hi, I’m Shivansh, a programmer based in India with a passion for
                 code.
               </p>
-              <Button className="md:w-80 md:h-16 w-60 h-12" />
+              <Button
+                text="See My Work"
+                className="md:w-80 md:h-16 w-60 h-12"
+                id="counter"
+              />
             </div>
           </header>
 
