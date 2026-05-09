@@ -2,7 +2,7 @@
 
 # 🚀 Shivansh Pandey — Developer Portfolio
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-portfolio--project--ivory--omega.vercel.app-62e0ff?style=for-the-badge&logo=vercel&logoColor=white)](https://portfolio-project-ivory-omega.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/Live%20-62e0ff?style=for-the-badge&logo=vercel&logoColor=white)](https://portfolio-project-ivory-omega.vercel.app/)
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![Three.js](https://img.shields.io/badge/Three.js-R3F-white?style=for-the-badge&logo=three.js&logoColor=black)](https://threejs.org/)
 [![Vite](https://img.shields.io/badge/Vite-5-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
