@@ -4,7 +4,6 @@ Command: npx gltfjsx@6.5.3 computer-optimized.glb -T
 Files: computer-optimized.glb [486.38KB] > C:\Users\Shivansh Pandey\Desktop\Portfolio-project\public\models\computer-optimized-transformed.glb [39.72KB] (92%)
 */
 
-import React from "react";
 import { useGLTF } from "@react-three/drei";
 
 export function Model(props) {

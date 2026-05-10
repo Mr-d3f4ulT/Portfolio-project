@@ -7,7 +7,7 @@
 
 html,
 body {
-  width: 100dvw;
+  width: 100%;
   overflow-x: hidden;
   background-color: black;
   color: white;
@@ -16,7 +16,7 @@ body {
 }
 
 section {
-  width: 100dvw;
+  width: 100%;
 }
 
 @theme {
@@ -99,7 +99,7 @@ section {
   }
 
   .hero-3d-layout {
-    @apply xl:w-[70%] w-full h-full min-h-[50vh] absolute xl:-top-20 top-24 xl:-right-20 right-0;
+    @apply xl:w-[70%] w-full h-full min-h-[50vh] absolute xl:-top-20 top-24 xl:-right-20 right-0 pointer-events-none lg:pointer-events-auto;
   }
 
   .navbar {
@@ -279,7 +279,12 @@ section {
   }
 
   .tech-card-animated-bg {
-    @apply absolute left-0 bottom-[-100%] w-full h-full bg-[#2D3240] group-hover:bottom-0 transition-all duration-700;
+    @apply absolute left-0 bottom-0 w-full h-full bg-[#2D3240] transition-transform duration-700;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  .group:hover .tech-card-animated-bg {
+    transform: translate3d(0, 0, 0);
   }
 
   .tech-card-content {
@@ -353,6 +358,7 @@ section {
   display: flex;
   flex-direction: column;
   animation: wordSlider 21s infinite cubic-bezier(0.9, 0.01, 0.3, 0.99);
+  will-change: transform;
 }
 
 @keyframes wordSlider {
@@ -416,7 +422,7 @@ section {
 
 /* marquee */
 .marquee {
-  width: 100dvw;
+  width: 100%;
   overflow: hidden;
   position: relative;
 }
@@ -426,7 +432,10 @@ section {
   width: 200%;
   height: 100%;
   position: absolute;
+  left: 0;
+  top: 0;
   overflow: hidden;
+  will-change: transform;
   animation: marquee 60s linear infinite;
 }
 .marquee-item {
@@ -434,10 +443,10 @@ section {
 }
 @keyframes marquee {
   0% {
-    left: 0;
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    left: -100%;
+    transform: translate3d(-50%, 0, 0);
   }
 }
 /* marquee end */
@@ -490,4 +499,51 @@ section {
 
 .card:hover::before {
   opacity: 1;
+}
+
+@media (hover: none), (pointer: coarse) {
+  html,
+  body {
+    scroll-behavior: auto;
+  }
+
+  .neon-card,
+  .neon-card:hover {
+    border-color: rgba(223, 237, 250, 0.18);
+    box-shadow: none;
+    transition: none;
+  }
+
+  .card {
+    transition: none;
+  }
+
+  .card::before,
+  .glow,
+  .tech-card-animated-bg {
+    display: none;
+  }
+
+  .cta-button .arrow-wrapper img {
+    animation: none;
+  }
+
+  .marquee-box {
+    animation-duration: 90s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }

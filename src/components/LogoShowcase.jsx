@@ -3,7 +3,12 @@ import { logoIconsList } from "../constants";
 const LogoIcon = ({ icon }) => {
   return (
     <div className="flex-none flex-center marquee-item">
-      <img src={icon.imgPath} alt={icon.name} />
+      <img
+        src={icon.imgPath}
+        alt={icon.name ?? "Company logo"}
+        loading="lazy"
+        decoding="async"
+      />
     </div>
   );
 };

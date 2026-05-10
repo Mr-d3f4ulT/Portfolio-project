@@ -10,9 +10,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Experience = () => {
   useGSAP(() => {
+    const useSimpleMotion = window.matchMedia(
+      "(max-width: 768px), (prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (useSimpleMotion) return;
+
     // Loop through each timeline card and animate them in
     // as the user scrolls to each card
-    gsap.utils.toArray(".timeline-card").forEach((card) => {
+    gsap.utils.toArray("#experience .timeline-card").forEach((card) => {
       // Animate the card coming in from the left
       // and fade in
       gsap.from(card, {
@@ -40,31 +46,31 @@ const Experience = () => {
     // from the top of the timeline to 70% down the screen
     // The timeline height should scale down from 1 to 0
     // as the user scrolls up the screen
-    gsap.to(".timeline", {
+    gsap.fromTo(
+      "#experience .timeline",
+      {
+        scaleY: 1,
+      },
+      {
       // Set the origin of the animation to the bottom of the timeline
       transformOrigin: "bottom bottom",
       // Animate the timeline height over 1 second
-      ease: "power1.inOut",
+      scaleY: 0,
+      ease: "none",
       // Trigger the animation when the timeline is at the top of the screen
       // and end it when the timeline is at 70% down the screen
       scrollTrigger: {
-        trigger: ".timeline",
+        trigger: "#experience .timeline",
         start: "top center",
         end: "70% center",
-        // Update the animation as the user scrolls
-        onUpdate: (self) => {
-          // Scale the timeline height as the user scrolls
-          // from 1 to 0 as the user scrolls up the screen
-          gsap.to(".timeline", {
-            scaleY: 1 - self.progress,
-          });
-        },
+        scrub: true,
       },
-    });
+    },
+    );
 
     // Loop through each expText element and animate them in
     // as the user scrolls to each text element
-    gsap.utils.toArray(".expText").forEach((text) => {
+    gsap.utils.toArray("#experience .expText").forEach((text) => {
       // Animate the text opacity from 0 to 1
       // and move it from the left to its final position
       // over 1 second with a power2 ease-in-out curve
@@ -106,7 +112,12 @@ const Experience = () => {
                 <div className="xl:w-2/6">
                   <GlowCard card={card}>
                     <div>
-                      <img src={card.imgPath} alt="exp-img" />
+                      <img
+                        src={card.imgPath}
+                        alt="exp-img"
+                        loading="lazy"
+                        decoding="async"
+                      />
                     </div>
                   </GlowCard>
                 </div>
@@ -118,7 +129,12 @@ const Experience = () => {
                     </div>
                     <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative z-20">
                       <div className="timeline-logo">
-                        <img src={card.logoPath} alt="logo" />
+                        <img
+                          src={card.logoPath}
+                          alt="logo"
+                          loading="lazy"
+                          decoding="async"
+                        />
                       </div>
                       <div>
                         <h1 className="font-semibold text-3xl">{card.title}</h1>
